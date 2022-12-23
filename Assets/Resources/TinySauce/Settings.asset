@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa11ec82e9746928e211e7f096812ca, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  gameAnalyticsIosGameKey: 
+  gameAnalyticsIosSecretKey: 
+  gameAnalyticsAndroidGameKey: ca82a98dffbc1577d35b179bc60b10b0
+  gameAnalyticsAndroidSecretKey: 78fb3fedaef45ca3c6cf6e7205ea5095e2753177
+  facebookAppId: 461060046216813
+  facebookClientToken: 1b1e029f8ff11806666c93d0f08c088a
+  adjustIOSToken: 
+  adjustAndroidToken: r5w2s2ehqpds
+  EditorIdfa: dd013752-053a-4b67-b2cf-ac679ac5f5f6
+  UseRemoteConfig: 0
+  UseVoodooAnalytics: 1
+  companyName: WalkTalk
+  privacyPolicyURL: https://docs.google.com/document/d/e/2PACX-1vSS934xNB7XYYxeuERwFcqIKGAV9GqtWS7coh3VHuEK8amX7erG9vqconS-VbJIAU2HqEiO6M_hEEgY/pub
+  developerContactEmail: lintonoriordan@gmail.com
