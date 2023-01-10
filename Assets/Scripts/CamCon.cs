@@ -27,7 +27,7 @@ public class CamCon : MonoBehaviour
             moving = true;
         }
     }
-    void PlayerFallenOff()
+    void PlayerFallenOff(bool ignore)
     {
         gameOver = true;
     }
@@ -37,7 +37,7 @@ public class CamCon : MonoBehaviour
         if ((playerCube.position.y - transform.position.y) > killDist && !gameOver)
         {
             gameOver = true;
-            GameEvents.instance.GameOver();
+            //GameEvents.instance.GameOver();
         }
         else if(!gameOver)
         {

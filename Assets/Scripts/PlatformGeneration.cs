@@ -5,25 +5,41 @@ using UnityEngine;
 public class PlatformGeneration : MonoBehaviour
 {
     [SerializeField] GameObject platformPrefab;
+    [SerializeField] GameObject finishPrefab;
     public static float platformDist = 7;
     int platformsGenerated;
     List<Platform> platforms = new List<Platform>();
+    int randLevelLength;
+    [SerializeField] Vector2Int levelLength;
     private void Start()
     {
+        randLevelLength = Random.Range(levelLength.x,levelLength.y);
         for (int i = 0; i < 5; i++)
         {
-            GeneratePlatform();
+            GeneratePlatform(platformPrefab);
         }
-        GameEvents.instance.onPlatformGenerate += GeneratePlatform;
+        GameEvents.instance.onPlatformGenerate += SelectPlatform;
     }
-    void GeneratePlatform()
-    {
+    void GeneratePlatform(GameObject prefab){
+        print("passed");
         if (platformsGenerated >4)
         StartCoroutine(DestroyPlatform());
         float yPos = -platformDist * platformsGenerated;
-        Platform platform = Instantiate(platformPrefab, new Vector3(0, yPos, 0), Quaternion.identity).GetComponent<Platform>();
+        Platform platform = Instantiate(prefab, new Vector3(0, yPos, 0), Quaternion.identity).GetComponent<Platform>();
         platforms.Add(platform);
         platformsGenerated += 1;
+    }
+    void SelectPlatform()
+    {
+        if(platformsGenerated<randLevelLength){
+            GeneratePlatform(platformPrefab);
+        }
+        else if(platformsGenerated == randLevelLength){
+            GeneratePlatform(finishPrefab);
+        }
+        else{
+            StartCoroutine(DestroyPlatform());
+        }
     }
     IEnumerator DestroyPlatform()
     {

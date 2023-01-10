@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float platformDist = 10;
     [SerializeField] float dropSpeed;
     [SerializeField] LayerMask platformMask;
+    [SerializeField] Transform cam;
     [SerializeField] AudioSource dropSfx;
     Rigidbody rb;
     Vector3 initialPos;
@@ -68,11 +69,15 @@ public class Movement : MonoBehaviour
             {
                 print("drops the block");
                 StartCoroutine(Drop());
+                if(hit.transform.parent.CompareTag("Finish")){
+                    GameEvents.instance.GameOver(true);
+                }
             }
         }
         else
         {
-            GameEvents.instance.GameOver();
+            print("died");
+            GameEvents.instance.GameOver(false);
             rb.isKinematic = false;
             rb.AddForce(Vector3.down * 100);
             rb.AddTorque(Vector3.forward * 50);
@@ -88,7 +93,7 @@ public class Movement : MonoBehaviour
         {
             Vector3 dec = new Vector3(0, dropSpeed * Time.deltaTime, 0);
             transform.position -= dec;
-            //cam.position -= dec;
+            cam.position -= dec;
             distanceDropped += dropSpeed * Time.deltaTime;
             if (distanceDropped >= platformDist)
             {

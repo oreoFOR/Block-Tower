@@ -13,16 +13,15 @@ public class GameEvents : MonoBehaviour
             instance = this;
         }
     }
-
     public event Action onPlatformGenerate;  
     public void PlatformPassed()
     {
         onPlatformGenerate();
     }
-    public event Action onGameOver;
-    public void GameOver()
+    public event Action<bool> onGameOver;
+    public void GameOver(bool success)
     {
-        onGameOver();
+        onGameOver(success);
     }
     public event Action onGameStarted;
     public void StartGame()

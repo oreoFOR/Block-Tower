@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
         controllingPlayer = true;
         StartCoroutine(SwipeControls2());
     }
-    void DisableControls()
+    void DisableControls(bool ignore)
     {
         controllingPlayer = false;
     }
